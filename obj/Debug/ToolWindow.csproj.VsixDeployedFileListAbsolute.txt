@@ -1,2 +1,0 @@
-C:\Users\derenl\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Company\ToolWindow\1.0\\ToolWindow.dll
-C:\Users\derenl\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Company\ToolWindow\1.0\\ToolWindow.pdb
