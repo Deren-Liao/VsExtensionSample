@@ -1,0 +1,46 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#	deleted:    bin/Debug/EnvDTE.xml
+#	deleted:    bin/Debug/EnvDTE100.xml
+#	deleted:    bin/Debug/EnvDTE80.xml
+#	deleted:    bin/Debug/EnvDTE90.xml
+#	deleted:    bin/Debug/EnvDTE90a.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.CoreUtility.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.ImageCatalog.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Imaging.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.OLE.Interop.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.ProjectAggregator.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Shell.14.0.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Shell.Immutable.10.0.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Shell.Immutable.11.0.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Shell.Immutable.12.0.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Shell.Immutable.14.0.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Shell.Interop.8.0.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Shell.Interop.9.0.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Shell.Interop.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.TextManager.Interop.8.0.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.TextManager.Interop.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Threading.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Utilities.xml
+#	deleted:    bin/Debug/Microsoft.VisualStudio.Validation.xml
+#	deleted:    bin/Debug/ToolWindow.pkgdef
+#	deleted:    bin/Debug/ToolWindow.vsix
+#	deleted:    bin/Debug/extension.vsixmanifest
+#	deleted:    obj/Debug/FirstWindowControl.baml
+#	deleted:    obj/Debug/FirstWindowControl.g.cs
+#	deleted:    obj/Debug/FirstWindowPackage.cto
+#	deleted:    obj/Debug/ToolWindow.csproj.FileListAbsolute.txt
+#	modified:   obj/Debug/ToolWindow.csproj.VsixDeployedFileListAbsolute.txt
+#	deleted:    obj/Debug/ToolWindow.g.resources
+#	deleted:    obj/Debug/ToolWindow.latest.pkgdef
+#	deleted:    obj/Debug/ToolWindow.pkgdef
+#	deleted:    obj/Debug/VSCT.read.1.tlog
+#	deleted:    obj/Debug/VSCT.write.1.tlog
+#	deleted:    obj/Debug/VSPackage.resources
+#	deleted:    obj/Debug/VSPackage.resources.original
+#	deleted:    obj/Debug/extension.vsixmanifest
+#
+
