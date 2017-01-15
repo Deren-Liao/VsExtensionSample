@@ -19,7 +19,9 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Diagnostics;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace GoogleCloudExtension.SolutionUtils
@@ -31,7 +33,7 @@ namespace GoogleCloudExtension.SolutionUtils
     {
         private const string ProjectJsonName = "project.json";
 
-        public readonly Solution _solution;
+        private readonly Solution _solution;
 
         /// <summary>
         /// Returns the current solution open, null if no solution is present.
@@ -45,6 +47,24 @@ namespace GoogleCloudExtension.SolutionUtils
                 return solution != null ? new SolutionHelper(solution) : null;
             }
         }
+
+        public List<ProjectHelper> Projects { get; } 
+        private List<ProjectHelper> GetProjectList()
+        {
+            List<ProjectHelper> list = new List<ProjectHelper>();
+            foreach (Project project in _solution.Projects)
+            {
+                var helper = ProjectHelper.Create(project);
+                if (helper != null)
+                {
+                    list.Add(helper);
+                }
+            }
+
+            return list;
+        }
+
+        public Solution solution => _solution;
 
         /// <summary>
         /// Returns the path to the root of the solution.
@@ -61,6 +81,33 @@ namespace GoogleCloudExtension.SolutionUtils
         /// </summary>
         public ISolutionProject SelectedProject => GetSelectedProject();
 
+        public List<ProjectSourceFile> FindMatchingSourceFile(string sourceLocationFilePath)
+        {
+            List<ProjectSourceFile> items = new List<ProjectSourceFile>();
+            foreach (Project project in _solution.Projects)
+            {
+                foreach (ProjectItem projectItem in project.ProjectItems)
+                {
+                    NavigateProjectItem(projectItem, sourceLocationFilePath, items);
+                }
+            }
+
+            return items;
+        }
+
+        public void NavigateProjectItem(ProjectItem projectItem, string sourceLocationFilePath, List<ProjectSourceFile> items)
+        {
+            if (ProjectSourceFile.DoesPathMatch(projectItem, sourceLocationFilePath))
+            {
+                items.Add(ProjectSourceFile.Create(projectItem));
+            }
+
+            foreach (ProjectItem nestedItem in projectItem.ProjectItems)
+            {
+                NavigateProjectItem(nestedItem, sourceLocationFilePath, items);
+            }            
+        }
+
         /// <summary>
         /// Returns the <seealso cref="SolutionBuild2"/> associated with the current solution.
         /// </summary>
@@ -69,6 +116,7 @@ namespace GoogleCloudExtension.SolutionUtils
         private SolutionHelper(Solution solution)
         {
             _solution = solution;
+            Projects = GetProjectList();
         }
 
         private ISolutionProject GetSelectedProject()

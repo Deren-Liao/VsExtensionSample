@@ -6,7 +6,7 @@
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="600"
+             d:DesignHeight="800" d:DesignWidth="600"
              Name="MyToolWindow">
     <UniformGrid Rows="6" Columns="3">
         <Border Margin="6">
@@ -18,12 +18,23 @@
                 VerticalAlignment="Center" HorizontalAlignment="Center"
                 Content="Move" x:Name="move" Click="move_Click"></Button>
         </Border>
-        <Border />
+        <Border>
+            <Button x:Name="_project" Content="Project Properties"
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Click="_project_Click"/>
+        </Border>
         <Border></Border>
         <TextBox x:Name="textBox" Text="Some" Margin="-100, 0, -100, 0" />
         <Border></Border>
         <Border></Border>
         <TextBox x:Name="_projectItems" Text="Some" Margin="-100, 0, -100, 0" />
+        <Border></Border>
 
+        <Border>
+            <TreeView x:Name="_treeView" 
+                      Margin="0, 0, -360, -360"
+                      />
+        </Border>
+        
     </UniformGrid>
 </UserControl>

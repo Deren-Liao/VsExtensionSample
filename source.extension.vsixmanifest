@@ -1,12 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="ToolWindow.Company.ee913831-382e-49ed-8157-8307f58bdf77" Version="1.0" Language="en-US" Publisher="Company" />
-    <DisplayName>ToolWindow</DisplayName>
-    <Description>Empty VSIX Project.</Description>
+    <Identity Id="EditorClassifier1.Company.77c37849-8f7c-4eba-a8dd-be728e9b8765" Version="1.0" Language="en-US" Publisher="Company" />
+    <DisplayName>EditorClassifier1</DisplayName>
+    <Description xml:space="preserve">EditorClassifier1 Editor Classifier</Description>
   </Metadata>
   <Installation>
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0]" />
+    <InstallationTarget Version="[14.0,15.0)" Id="Microsoft.VisualStudio.Community" />
   </Installation>
   <Dependencies>
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
@@ -14,5 +14,8 @@
   </Dependencies>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+    <!-- Provides MEF components for EditorClassifier1 -->
+    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+
   </Assets>
 </PackageManifest>
