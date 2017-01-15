@@ -62,7 +62,6 @@ namespace ToolWindow
             var projectItems = SolutionHelper.CurrentSolution.FindMatchingSourceFile("Startup.cs");
             _w = projectItems?[0].GotoLine(10);
             ShowTip();
-
         }
 
         private void OpenAssemblyInfo()
@@ -211,6 +210,15 @@ namespace ToolWindow
             //_classifier = AggregatorService.GetClassifier(_view.TextBuffer);
 
             //SearchMove(_view);
+
+            if (LoggingTagger.LoggingTaggerCollection != null)
+            {
+                LoggingTagger loggingTagger;
+                if (LoggingTagger.LoggingTaggerCollection.TryGetValue(CurrentTextViewer, out loggingTagger))
+                {
+                    loggingTagger.UpdateAtCaretPosition(CurrentTextViewer.Caret.ContainingTextViewLine);
+                }
+            }
         }
 
         //private void SearchMove(IWpfTextView view)

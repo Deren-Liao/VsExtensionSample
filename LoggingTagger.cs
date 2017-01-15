@@ -34,6 +34,8 @@ namespace ToolWindow
 
         private readonly IToolTipProvider _toolTipProvider;
 
+        public static Dictionary<ITextView, LoggingTagger> LoggingTaggerCollection;
+
         public event EventHandler<SnapshotSpanEventArgs> TagsChanged;
 
         public LoggingTagger(ITextView view, ITextBuffer sourceBuffer, ITextSearchService textSearchService,
@@ -49,7 +51,24 @@ namespace ToolWindow
             _view.Caret.PositionChanged += CaretPositionChanged;
             _view.LayoutChanged += ViewLayoutChanged;
             _toolTipProvider = toolTipProviderFactory.GetToolTipProvider(_view);
+            if (_view == FirstWindowControl.CurrentTextViewer)
+            {
+                UpdateAtCaretPosition(_view.Caret.ContainingTextViewLine);
+            }
 
+            // TODO: syncronized access.
+            if (LoggingTaggerCollection == null)
+            {
+                LoggingTaggerCollection = new Dictionary<ITextView, LoggingTagger>();
+            }
+            if (!LoggingTaggerCollection.ContainsKey(view))
+            {
+                LoggingTaggerCollection.Add(view, this);
+            }
+            else
+            {
+                LoggingTaggerCollection[view] = this;
+            }
         }
 
         /// <summary>
@@ -75,7 +94,7 @@ namespace ToolWindow
         /// <summary>
         /// Check the caret position. If the caret is on a new word, update the CurrentWord value
         /// </summary>
-        private void UpdateAtCaretPosition(ITextViewLine currentViewLine)
+        public void UpdateAtCaretPosition(ITextViewLine currentViewLine)
         {
             _currentViewLine = currentViewLine;
             var tempEvent = TagsChanged;
